@@ -1,0 +1,673 @@
+:root {
+  color-scheme: light; /* Define que o site usa o esquema de cor claro */
+  --text-color: #000; /* Cor do texto */
+  --background-color: #fff; /* Cor de fundo */
+}
+
+/* Reset e Estilos Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+/* Rolagem suave para toda a página */
+html {
+    scroll-behavior: smooth; /* Aplica rolagem suave em todo o site */
+}
+  
+  /* Navbar */
+  .navbar {
+    background: #131313; /* Cor de fundo */
+    height: 80px; /* Altura fixa */
+    display: flex; /* Flexbox para layout */
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha verticalmente */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    position: sticky; /* Fixa no topo */
+    top: 0; /* Topo da página */
+    z-index: 999; /* Sobreposição */
+  }
+  
+  .navbar__container {
+    display: flex; /* Flexbox para container */
+    justify-content: space-between; /* Espaçamento entre itens */
+    height: 80px; /* Altura fixa */
+    width: 100%;
+    max-width: 1300px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0 50px; /* Espaçamento lateral */
+  }
+  
+  .navbar__logo-img {
+    height: 80px; /* Altura da imagem */
+    margin-right: 50px; /* Espaçamento entre imagem e texto */
+    vertical-align: middle; /* Alinha a imagem com o texto */
+  }
+  
+  .navbar__menu {
+    display: flex; /* Flexbox para menu */
+    align-items: center; /* Alinha verticalmente */
+    list-style: none; /* Remove marcadores */
+  }
+  
+  .navbar__item {
+    height: 80px; /* Altura do item */
+  }
+  
+  .navbar__links {
+    color: #fff; /* Cor do link */
+    display: flex; /* Flexbox para links */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 125px; /* Largura do link */
+    text-decoration: none; /* Remove sublinhado */
+    height: 100%; /* Altura total */
+    transition: color 0.3s ease; /* Transição suave para a cor */
+  }
+  
+  .navbar__links:hover {
+    color: #9518fc; /* Cor do link ao passar o mouse */
+  }
+  
+  
+ /* Estilos para dispositivos móveis */
+@media screen and (max-width: 960px) {
+  .navbar__container {
+    padding: 0;
+  }
+
+  .navbar__menu {
+    display: grid;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: -1000px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+
+  .navbar__menu.active {
+    background: #131313;
+    top: 100%;
+    opacity: 1;
+    z-index: 99;
+    height: 60vh;
+    font-size: 1.6rem;
+  }
+
+  .navbar__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30px; /* Ajuste a largura do ícone */
+    height: 25px; /* Ajuste a altura do ícone */
+    cursor: pointer;
+  }
+
+  .navbar__toggle .bar {
+    width: 100%;
+    height: 3px;
+    margin: 4px 0; /* Espaço entre as barras */
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    border-radius: 5px;
+  }
+
+  .navbar__item {
+    width: 100%;
+  }
+
+  .navbar__links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .navbar__btn {
+    padding-bottom: 2rem;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80px;
+    margin: 0;
+  }
+
+  #mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(to right, #161616, #000000); /* Gradiente */
+    padding: 200px 0; /* Espaçamento interno */
+  }
+  
+  .hero__container {
+    display: flex; /* Flexbox para container */
+    flex-direction: column; /* Direção da flexbox */
+    justify-content: center; /* Centraliza conteúdo */
+    align-items: center; /* Alinha verticalmente */
+    max-width: 1200px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza o container */
+    height: 90%; /* Altura do container */
+    text-align: center; /* Centraliza texto */
+    padding: 30px; /* Espaçamento interno */
+  }
+  
+  .hero__heading {
+    font-size: 100px; /* Tamanho da fonte do título */
+    margin-bottom: 24px; /* Espaçamento abaixo do título */
+    color: #fff; /* Cor do título */
+    background: linear-gradient(to right, #00dbde, #fc00ff); /* Gradiente */
+    background-size: 100%; /* Tamanho do fundo */
+    -webkit-background-clip: text; /* Clip do fundo para o texto */
+    -moz-background-clip: text; /* Clip do fundo para o texto */
+    -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+    -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  }
+  
+  .hero__description {
+    font-size: 40px; /* Tamanho da fonte da descrição */
+    background: linear-gradient(to right, #fff, #fff); /* Gradiente */
+    background-size: 100%; /* Tamanho do fundo */
+    -webkit-background-clip: text; /* Clip do fundo para o texto */
+    -moz-background-clip: text; /* Clip do fundo para o texto */
+    -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+    -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  }
+  
+  .highlight {
+    border-bottom: 4px solid rgb(132, 0, 255); /* Bordas destacadas */
+  }
+  
+  
+  /* Responsividade */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0; /* Reduz o padding vertical */
+  }
+
+  .hero__heading {
+    font-size: 50px; /* Reduz o tamanho do título */
+  }
+
+  .hero__description {
+    font-size: 20px; /* Reduz o tamanho da descrição */
+  }
+}
+
+/* Seção Main */
+
+.main { 
+  background-color: #131313; /* Cor de fundo */
+  padding: 10rem 0; /* Espaçamento interno */
+}
+
+.main__container {
+  display: grid; /* Grid para container */
+  grid-template-columns: 1fr 1fr; /* Duas colunas */
+  align-items: center; /* Alinha verticalmente */
+  justify-content: center; /* Centraliza conteúdo */
+  margin: 0 auto; /* Centraliza o container */
+  height: 90%; /* Altura do container */
+  z-index: 1; /* Z-index */
+  width: 100%; /* Largura total */
+  max-width: 1300px; /* Largura máxima */
+  padding: 0 50px; /* Espaçamento lateral */
+}
+
+.main__content {
+  color: #fff; /* Cor do texto */
+  width: 100%; /* Largura total */
+}
+
+.main__content h1 {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  background-color: #fe3b6f; /* Cor de fundo do título */
+  background-image: linear-gradient(to right, #00dbde, #8f0eff); /* Gradiente */
+  background-size: 100%; /* Tamanho do fundo */
+  -webkit-background-clip: text; /* Clip do fundo para o texto */
+  -moz-background-clip: text; /* Clip do fundo para o texto */
+  -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  text-transform: uppercase; /* Maiúsculas */
+  margin-bottom: 32px; /* Espaçamento abaixo do título */
+}
+
+.main__content h2 {
+  font-size: 4rem; /* Tamanho da fonte do subtítulo */
+  background: linear-gradient(to right, #8f0eff, #da22ff); /* Gradiente */
+  background-size: 100%; /* Tamanho do fundo */
+  -webkit-background-clip: text; /* Clip do fundo para o texto */
+  -moz-background-clip: text; /* Clip do fundo para o texto */
+  -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+}
+
+.main__content p {
+  margin-top: 1rem; /* Espaçamento superior */
+  font-size: 2rem; /* Tamanho da fonte do parágrafo */
+  font-weight: 700; /* Negrito */
+}
+
+.main__btn {
+  font-size: 1.8rem; /* Tamanho da fonte do botão */
+  background: linear-gradient(to right, #00dbde, #9518fc, #da22ff); /* Gradiente */
+  padding: 20px 60px; /* Espaçamento interno */
+  border: none; /* Remove borda */
+  border-radius: 4px; /* Bordas arredondadas */
+  margin-top: 2rem; /* Espaçamento superior */
+  cursor: pointer; /* Cursor de ponteiro */
+  position: relative; /* Posiciona o botão */
+  transition: all 0.35s; /* Transição suave */
+  outline: none; /* Remove contorno */
+}
+
+.main__btn a {
+  position: relative; /* Posiciona o link */
+  z-index: 2; /* Z-index */
+  color: #fff; /* Cor do texto */
+  text-decoration: none; /* Remove sublinhado */
+}
+
+.main__btn:after {
+  position: absolute; /* Posiciona o efeito */
+  content: ''; /* Conteúdo vazio */
+  top: 0; /* Posiciona no topo */
+  left: 0; /* Posiciona na esquerda */
+  width: 0; /* Largura inicial */
+  height: 100%; /* Altura total */
+  background: #ff1ead; /* Cor do efeito */
+  transition: all 0.35s; /* Transição suave */
+  border-radius: 4px; /* Bordas arredondadas */
+}
+
+.main__btn:hover {
+  color: #fff; /* Cor do texto ao passar o mouse */
+}
+
+.main__btn:hover:after {
+  width: 100%; /* Largura total ao passar o mouse */
+}
+
+.main__img--container {
+  text-align: center; /* Centraliza texto */
+}
+
+.main__img--card {
+  margin: 10px; /* Espaçamento interno */
+  height: 472px; /* Diminuindo a altura do contêiner */
+  width: 472px; /* Diminuindo a largura do contêiner */
+  border-radius: 4px; /* Bordas arredondadas */
+  display: flex; /* Flexbox para imagem */
+  flex-direction: column; /* Direção da flexbox */
+  justify-content: center; /* Centraliza conteúdo */
+  color: #fff; /* Cor do texto */
+  background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%); /* Gradiente */
+}
+
+.fa-layer-group,
+.fa-users {
+  font-size: 14rem; /* Tamanho da fonte do ícone */
+}
+
+#card-2 {
+  background: linear-gradient(to right, #dd2476, #ff512f); /* Gradiente */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .main {
+    text-align: center; /* Centraliza o texto */
+    padding: 3rem 0; /* Reduz o padding vertical da seção */
+  }
+
+  .main__container {
+    display: flex;
+    flex-direction: column; /* Coloca o conteúdo em uma coluna */
+    align-items: center; /* Centraliza os itens */
+    padding: 0 15px; /* Reduz o padding lateral */
+  }
+
+  .main__content h1 {
+    font-size: 1.6rem; /* Reduz o tamanho do título */
+    margin-bottom: 1rem; /* Menor espaçamento abaixo do título */
+  }
+
+  .main__content p {
+    font-size: 1rem; /* Reduz o tamanho do parágrafo */
+    color: #ffffff; /* Tom de cinza suave */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 1.5rem; /* Espaço inferior */
+    line-height: 1.4; /* Melhora a legibilidade */
+  }
+
+  .main__btn {
+    font-size: 1rem; /* Tamanho menor para o botão */
+    padding: 10px 25px; /* Padding compacto */
+    border-radius: 5px; /* Bordas suaves */
+    text-align: center;
+  }
+
+  /* Ajustes para imagem ilustrativa */
+  .main__img--container {
+    display: flex;
+    justify-content: center; /* Centraliza a imagem */
+    margin-bottom: 1.5rem; /* Espaço abaixo da imagem */
+  }
+
+  .main__img--card {
+    width: 250px; /* Largura menor para imagem */
+    height: 250px; /* Altura menor para imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fa-layer-group,
+  .fa-users {
+    font-size: 5rem; /* Tamanho menor para os ícones */
+  }
+}
+
+
+
+/* Seção Desenvolvimento */
+
+.development {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh; /* Ocupa 100% da altura da viewport */
+  background-color: #131313; /* Fundo preto, conforme o tema do site */
+  color: #fff; /* Texto branco para contraste */
+  padding: 20px; /* Espaçamento interno para o conteúdo */
+}
+
+.development__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Limita a largura do container */
+  width: 100%; /* Garante que ocupe 100% da largura */
+}
+
+.development__content {
+  max-width: 50%;
+  text-align: left; /* Texto alinhado à esquerda */
+}
+
+.development__content h1 {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  background-color: #fe3b6f; /* Cor de fundo do título */
+  background-image: linear-gradient(to right, #00dbde, #8f0eff); /* Gradiente */
+  background-size: 100%; /* Tamanho do fundo */
+  -webkit-background-clip: text; /* Clip do fundo para o texto */
+  -moz-background-clip: text; /* Clip do fundo para o texto */
+  -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  text-transform: uppercase; /* Maiúsculas */
+  margin-bottom: 32px; /* Espaçamento abaixo do título */
+}
+
+.development__content p {
+  margin-top: 1rem; /* Espaçamento superior */
+  font-size: 1.5rem; /* Tamanho da fonte do parágrafo */
+  font-weight: 700; /* Negrito */
+}
+
+.development__image {
+  max-width: 40%; /* Mantido o max-width para responsividade */
+  text-align: right; /* Garante que a imagem fique à direita */
+}
+
+.development__image img {
+  width: 100%; /* Mantém a imagem ocupando 100% do seu contêiner */
+  height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+  max-height: 500px; /* Define uma altura máxima consistente */
+  object-fit: cover; /* Mantém a proporção da imagem */
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+@media (max-width: 768px) {
+  .development {
+    display: flex; /* Garante que a seção use flexbox */
+    flex-direction: column; /* Muda a direção para coluna em telas pequenas */
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
+    padding: 10px; /* Reduz o padding */
+  }
+
+  .development__container {
+    display: flex; /* Certifique-se de que o container use flexbox */
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: center; /* Centraliza os itens */
+  }
+
+  .development__image {
+    max-width: 70%; /* Ajustado para 70% para um tamanho menor em telas pequenas */
+    text-align: center; /* Centraliza a imagem */
+    margin: 20px 0; /* Adiciona espaço acima e abaixo da imagem */
+  }
+
+  .development__image img {
+    max-height: 300px; /* Ajusta a altura máxima para a imagem em telas pequenas */
+  }
+
+  .development__content {
+    max-width: 90%; /* A largura do conteúdo ocupa 90% em telas pequenas */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Adiciona espaço abaixo do conteúdo */
+  }
+
+  .development__content h1 {
+    font-size: 1.5rem; /* Reduz o tamanho do título */
+  }
+
+  .development__content p {
+    font-size: 1rem; /* Reduz o tamanho do parágrafo */
+  }
+}
+
+
+/* Seção Diagrama ER e Telas  */
+.diagrama-er-section {
+  padding: 40px 20px;
+  background-color: #131313; /* Fundo preto, seguindo o estilo do site */
+  color: #fff;
+  text-align: center;
+}
+
+.diagrama-er__title {
+  font-size: 1.5rem; /* Tamanho da fonte do título */
+  background-color: #fe3b6f; /* Cor de fundo do título */
+  background-image: linear-gradient(to right, #00dbde, #8f0eff); /* Gradiente */
+  background-size: 100%; /* Tamanho do fundo */
+  -webkit-background-clip: text; /* Clip do fundo para o texto */
+  -moz-background-clip: text; /* Clip do fundo para o texto */
+  -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  text-transform: uppercase; /* Maiúsculas */
+  margin-bottom: 32px; /* Espaçamento abaixo do título */
+}
+
+.diagrama-er__image {
+  width: 100% !important;
+  max-width: 1000px !important;
+  height: auto !important;
+  border-radius: 8px;
+}
+ 
+
+.diagrama-er__description {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Seção Telas do Software */
+.telas-software-section {
+  padding: 40px 20px;
+  background-color: #131313; /* Fundo preto */
+  color: #fff;
+}
+
+.telas-software__title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem; /* Tamanho da fonte do título */
+  background-color: #fe3b6f; /* Cor de fundo do título */
+  background-image: linear-gradient(to right, #00dbde, #8f0eff); /* Gradiente */
+  background-size: 100%; /* Tamanho do fundo */
+  -webkit-background-clip: text; /* Clip do fundo para o texto */
+  -moz-background-clip: text; /* Clip do fundo para o texto */
+  -webkit-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  -moz-text-fill-color: transparent; /* Preenchimento transparente para o texto */
+  text-transform: uppercase; /* Maiúsculas */
+  margin-bottom: 32px; /* Espaçamento abaixo do título */
+  
+}
+
+.telas-software__item {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.telas-software__image {
+  width: 100%;
+  max-width: 900px; /* Define um tamanho máximo para as telas do software */
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+.telas-software__item p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .diagrama-er__image,
+  .telas-software__image {
+      max-width: 100%; /* Garantindo que as imagens ocupem a largura total em telas menores */
+  }
+}
+
+/* Estilos gerais do footer */
+footer {
+  background-color: #131313; /* Fundo preto */
+  color: #fff; /* Texto branco */
+  padding: 40px 20px;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid #333; /* Linha de divisão sutil */
+  padding-top: 20px;
+}
+
+.footer__links, .footer__contact, .footer__social {
+  flex: 1;
+  min-width: 250px; /* Garantir que as colunas se ajustem em telas menores */
+}
+
+/* Estilo para os títulos do rodapé */
+.footer__links h3,
+.footer__contact h3,
+.footer__social h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Estilo para os links */
+.footer__links ul,
+.footer__social ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer__links li,
+.footer__social li {
+  margin-bottom: 10px;
+}
+
+.footer__links a,
+.footer__social a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer__links a:hover,
+.footer__social a:hover {
+  color: #bbb; /* Cor de destaque ao passar o mouse */
+}
+
+/* Estilo para a seção de contato */
+.footer__contact p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #ddd; /* Cor de texto mais clara */
+}
+
+/* Estilo para o rodapé inferior (direitos autorais) */
+.footer__bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.footer__bottom p {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer__content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer__links, .footer__contact, .footer__social {
+      text-align: center;
+  }
+}
